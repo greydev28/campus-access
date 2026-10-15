@@ -1,0 +1,19 @@
+{
+    "requests": [
+        {
+            "id": "A001",
+            "fellow_id": "F001",
+            "card_type": "student",
+            "status": "approved",
+            "approved_by": "greydev"
+        },
+        {
+            "id": "A002",
+            "fellow_id": "F002",
+            "card_type": "student",
+            "status": "approved",
+            "approved_by": "lizzy"
+        }
+    ],
+    "next_id": 3
+}

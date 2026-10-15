@@ -12,7 +12,7 @@ def approve_request(request_id, approved_by):
 
     request["approved_by"] = approved_by.strip()
     request["status"] = "approved"
-
+    save_requests() 
     return request
 
 
@@ -29,7 +29,7 @@ def issue_card(request_id):
         raise ValueError("An approved card must have an approver.")
 
     request["status"] = "issued"
-
+    save_requests() 
     return request
 
 
@@ -40,5 +40,5 @@ def return_card(request_id):
         raise ValueError("Only issued cards can be returned.")
 
     request["status"] = "returned"
-
+    save_requests() 
     return request
