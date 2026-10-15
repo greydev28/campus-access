@@ -39,7 +39,7 @@ class WorkflowTests(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             workflow.approve_request(
-                self.request["id"],
+                self.request["id"]
                 "   "
             )
 
