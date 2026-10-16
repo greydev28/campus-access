@@ -53,13 +53,7 @@ Make sure the save and load functions use the same file path. The current code s
 Running Tests
 Error Handling and Validation
 The application validates user input and request transitions. Invalid IDs, unsupported card types, unknown requests, and invalid workflow transitions should produce readable error messages rather than silently changing request data.
-Contributing
-Contributions are welcome.
-1. Fork the repository.
-2. Create a branch for your change.
-3. Make your changes and add or update tests.
-4. Run the test suite.
-5. Open a pull request describing your changes.
+Contributions are welcome
 Future Improvements
 Possible improvements include:
 - Add more automated tests for storage and workflow validation.
