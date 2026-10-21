@@ -13,7 +13,7 @@ class WorkflowTests(unittest.TestCase):
         storage.requests = {}
 
         self.request = storage.create_request(
-            "STU100",
+            "F001",
             "student"
         )
 
@@ -39,7 +39,7 @@ class WorkflowTests(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             workflow.approve_request(
-                self.request["id"]
+                self.request["id"],
                 "   "
             )
 
@@ -48,15 +48,21 @@ class WorkflowTests(unittest.TestCase):
     def test_complete_workflow(self):
         request_id = self.request["id"]
 
-        workflow.approve_request(request_id, "M01")
+        
+        workflow.approve_request(request_id, "GREY")
+        self.request = storage.get_request(request_id)
+        
+        self.assertEqual(self.request["approved_by"], "GREY")
         self.assertEqual(self.request["status"], "approved")
-        self.assertEqual(self.request["approved_by"], "M01")
 
+        
         workflow.issue_card(request_id)
         self.assertEqual(self.request["status"], "issued")
 
+        # 3. Return Card
         workflow.return_card(request_id)
         self.assertEqual(self.request["status"], "returned")
+
 
     def test_cannot_return_twice(self):
         request_id = self.request["id"]
@@ -65,7 +71,7 @@ class WorkflowTests(unittest.TestCase):
         workflow.issue_card(request_id)
         workflow.return_card(request_id)
 
-        before = self.request.copy()
+        before = self.request
 
         with self.assertRaises(ValueError):
             workflow.return_card(request_id)

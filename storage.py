@@ -46,7 +46,7 @@ def validate_request_id(request_id):
 
 
 def create_request(fellow_id, card_type):
-    """Create and store a new request, then return a copy."""
+    
     global next_id
 
     normalized_fellow_id = validate_fellow_id(fellow_id)
@@ -263,7 +263,7 @@ def update_request_status(request_id, new_status, approved_by=None):
             f"Unsupported transition: {current['status']} -> {new_status}."
         )
 
-    updated = current.copy()
+    updated = current
 
     if new_status == "approved":
         if not isinstance(approved_by, str) or not approved_by.strip():
@@ -285,3 +285,5 @@ def update_request_status(request_id, new_status, approved_by=None):
     requests[request_id] = updated
 
     return updated.copy()
+
+
